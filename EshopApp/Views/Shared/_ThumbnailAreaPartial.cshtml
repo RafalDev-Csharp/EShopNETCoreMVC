@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ShopItem>
+
+@if (Model.Count() > 0)
+{
+	<div class="col-12 post @Model.FirstOrDefault().Category.Name.Replace(" ",string.Empty) shop-items">
+		<div class="row">
+			<h3 class="text" style="color:#00008B;"> @Model.FirstOrDefault().Category.Name </h3>
+		</div>
+		@{string bcg; int count = 1;}
+		@foreach (var item in Model)
+		{
+			count++;
+			if (count % 2 == 0)
+			{ bcg = "#66ccff"; }
+			else { bcg = "#b3e6ff"; }
+			<div class="border border-info rounded col-12" style="margin-bottom:10px; margin-top:10px; padding:10px; background-color:@bcg">
+				<div class="row">
+					<div class="col-md-3 col-sm-12">
+						<img src="@item.Image" width="99%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+					</div>
+					<div class="col-md-9 col-sm-12">
+						<div class="row pr-3">
+							<div class="col-8">
+								<label class="text-primary" style="font-size: 21px;">
+									<label style="color:navy"> @item.SubCategory.Name -</label>
+									<label style="color:crimson"> @item.Name</label>
+								</label>
+								@if (item.TypeOfOffer == "1")
+								{
+									<img srcset="~/images/sale.png" title="Sale" style="border-radius:5px; border:1px solid #ff3333" />
+								}
+								@if (item.TypeOfOffer == "2")
+								{
+									<img srcset="~/images/new.png" title="New" style="border-radius:5px; border:1px solid #ff3333" />
+								}
+								@if (item.TypeOfOffer == "3")
+								{
+									<img srcset="~/images/outlet.png" title="Outlet" style="border-radius:5px; border:1px solid #ff3333" />
+								}
+							</div>
+							<div class="col-4 text-right" style="color:maroon;">
+								<h4>€ @item.Price</h4>
+							</div>
+						</div>
+
+
+						<div class="row col-12 text-justify d-none d-md-block">
+							<p style="background-color:none;">@Html.Raw(item.Description)</p>
+						</div>
+						<div class="col-md-3 col-sm-12 offset-md-9 text-center">
+							<a asp-action="Details" class="btn form-control btn-danger" asp-route-id="@item.Id">Details</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		}
+		<div class="p-4"></div>
+	</div>
+}

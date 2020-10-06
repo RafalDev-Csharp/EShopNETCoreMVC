@@ -1,0 +1,47 @@
+﻿@model string
+@using EshopApp.Utility
+
+
+<div style="width:100%">
+	<table class="table table-striped border">
+		<tr class="table-secondary">
+			<th class="text-center">
+				Order Placed
+			</th>
+			@if (Model == SD.StatusSubmitted)
+			{
+				<div class="progress">
+					<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+				<br />
+			}
+			<th class="text-center">
+				Warehouse
+			</th>
+			@if (Model == SD.StatusInProcess)
+			{
+				<div class="progress">
+					<div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			}
+			<th class="text-center">
+				Ready for Pickup
+			</th>
+			@if (Model == SD.StatusReady)
+			{
+				<div class="progress">
+					<div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: 75%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			}
+			<th class="text-center">
+				Completed
+			</th>
+			@if (Model == SD.StatusCompleted)
+			{
+				<div class="progress">
+					<div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			}
+		</tr>
+	</table>
+</div>

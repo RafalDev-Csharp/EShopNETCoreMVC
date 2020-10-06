@@ -1,0 +1,87 @@
+﻿@model EshopApp.Models.ViewModels.ShopItemViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2 class="text-info">Details Shop Item</h2>
+<br />
+
+<div class="backgroundWhiteBorder row">
+    <div class="col-8">
+        <fieldset disabled>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ShopItem.Name" class="custom-label"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="ShopItem.Name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ShopItem.Description" class="custom-label"></label>
+                </div>
+                <div class="col-8">
+                    @Html.TextAreaFor(m => m.ShopItem.Description)
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ShopItem.Price" class="custom-label"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="ShopItem.Price" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ShopItem.CategoryId" class="custom-label"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="ShopItem.Category.Name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ShopItem.SubCategoryId" class="custom-label"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="ShopItem.SubCategory.Name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ShopItem.TypeOfOffer" class="custom-label"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="ShopItem.TypeOfOffer" asp-items="Html.GetEnumSelectList<ShopItem.ETypeOfOffer>()" class="form-control"></select>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-3">
+        <img src="@Model.ShopItem.Image" width="100%" style="border-radius:5px;border:1px solid #bbb9b9;" />
+    </div>
+    <div class="col-8">
+        <div class="col-8 offset-4">
+            <partial name="_DetailsAndBackToListButton" model="Model.ShopItem.Id" />
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: "lists",
+            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist",
+            menubar: 'file edit format',
+            readonly: 1
+        });</script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+
+}
