@@ -77,8 +77,6 @@ The project was created to gain practical experience with:
 
 External services require configuration values such as API keys, connection strings, and authentication credentials.
 
-These values should be stored using **User Secrets, environment variables, or another secure configuration mechanism** and should not be committed to the repository.
-
 ## Project status
 
 This is a personal learning project created with an older ASP.NET Core version.
