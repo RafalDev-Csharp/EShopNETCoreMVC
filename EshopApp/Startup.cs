@@ -55,14 +55,14 @@ namespace EshopApp
 
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
-                facebookOptions.AppId = "586969862085015";
-                facebookOptions.AppSecret = "80363756a9ba831fce89ad41fd7adfd5";
+                facebookOptions.AppId = "";
+                facebookOptions.AppSecret = "";
             });
 
             services.AddAuthentication().AddGoogle(googleOptions =>
             {
-                googleOptions.ClientId = "371492505023-618vvdlbmf950lps1up985mtcce7dgfd.apps.googleusercontent.com";
-                googleOptions.ClientSecret = "fsjDtQIO_F0Fwvz1NUWZBEML";
+                googleOptions.ClientId = "";
+                googleOptions.ClientSecret = "";
             });
 
             services.AddSession(options =>
